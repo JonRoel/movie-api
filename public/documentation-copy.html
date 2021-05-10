@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Movie API Documentation</title>
+  </head>
+  <body>
+    <h1>Movie API</h1>
+    <p>This is a movie api that can be used to access a list of movie detils including: Movie Title, Genre, Release Year, Actors and description.</p>
+    <div class="table-wrapper">
+      <table class="methods-table">
+        <thead>
+          <th>Request</th>
+          <th>URL</th>
+          <th>Response</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>List all movies to user</td>
+            <td>/movies</td>
+            <td>List of all available movies with image and title</td>
+          </tr>
+          <tr>
+            <td>Return available data about specific movie</td>
+            <td>/movies/[movie title]</td>
+            <td>Results in movie title, cover art, description, genre, featured film, director, actors</td>
+          </tr>
+          <tr>
+            <td>Return a list of movies by genre</td>
+            <td>/movies/genres/[genre]</td>
+            <td>Returns and a list of movies that match the genre</td>
+          </tr>
+          <tr>
+            <td>Return Directors Bio</td>
+            <td>/directors/[directors name]</td>
+            <td>Gives information about specific director (bio, birth date, death year, featured work)</td>
+          </tr>
+          <tr>
+            <td>Sign up a new user</td>
+            <td>/sign-up</td>
+            <td>Allows a user to register a new account</td>
+          </tr>
+          <tr>
+            <td>User login</td>
+            <td>/login</td>
+            <td>User can login to their account</td>
+          </tr>
+          <tr>
+            <td>View users info</td>
+            <td>/users/[username]</td>
+            <td>User can view their account details</td>
+          </tr>
+          <tr>
+            <td>Delete account</td>
+            <td>/users/[username]/delete</td>
+            <td>Allows a user unregister and delete their account</td>
+          </tr>
+          <tr>
+            <td>Update a users info</td>
+            <td>/users/[user-name]/edit</td>
+            <td>Update a users inforamtion</td>
+          </tr>
+          <tr>
+            <td>Add to favorites</td>
+            <td>users/[username]/favorites/add-favorites</td>
+            <td>Let's user add a movie to their favorites list</td>
+          </tr>
+          <tr>
+            <td>Remove from Favorites</td>
+            <td>/users/[username]/favorites/remove-favorites</td>
+            <td>User can remove item from their favorites list</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <footer></footer>
+</html>
