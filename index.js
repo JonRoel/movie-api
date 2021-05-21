@@ -163,7 +163,7 @@ app.get('/sign-up.html', function(req, res) {
   Email: String,
   birthday: Date
 } */
-app.post('/users', passport.authenticate('jwt', {session:false}), [
+app.post('/users', [
   check('Username', 'Username is required').isLength({min: 4}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
