@@ -21,7 +21,7 @@ app.use(cors());
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Set allowed Origins
-let allowedOrigins = ['http://localhost:8080', 'http://testside.com'];
+let allowedOrigins = ['http://localhost:8080', 'https://myflix-jonathon.herokuapp.com/'];
 
 app.use(cors({
   origin: (origin, callback) => {
