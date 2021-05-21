@@ -17,7 +17,8 @@ const express = require('express'),
 const cors = require('cors');
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Set allowed Origins
 let allowedOrigins = ['http://localhost:8080', 'http://testside.com'];
