@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Models = require('./models.js');
+const Models = require('../models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -17,8 +17,8 @@ const express = require('express'),
 const cors = require('cors');
 app.use(cors());
 
-//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Set allowed Origins
 let allowedOrigins = ['http://localhost:8080', 'https://myflix-jonathon.herokuapp.com/'];
@@ -30,7 +30,7 @@ app.use(cors({
       let message = 'The CORS policy for this application does not allow access from origin ' + origin;
       return callback(new Error(message ), false);
     }
-    return callback(nukk, true);
+    return callback(null, true);
   }
 }));
 
@@ -57,37 +57,7 @@ app.use((err, req, res, next) => {
 let auth = require('./auth')(app);
 
 const passport = require('passport');
-require('./passport');
-
-//Add Movie to database 
-//  NOTE: Will use later to have a frontend input for adding movies as admin
-
-// app.post('/movies', (req, res) => {
-//   Movies.findOne({Title: req.body.Title })
-//   .then((movie) => {
-//     if(movie) {
-//       return res.status(400).send(req.body.Title + ' already exists');
-//     } else {
-//       Movies
-//         .create({
-//           Title: req.body.Title,
-//           description: req.body.description,
-//           genre: req.body.genre,
-//           imageUrl: req.body.imageUrl,
-//           featured: req.body.featured
-//         })
-//         .then ((movie) =>{res.status(201).json(movie) })
-//         .catch((error) => {
-//           console.error(error);
-//           res.status(500).send('Error: ' + error);
-//         })
-//     }
-// })
-// .catch((error) => {
-//   console.error(error);
-//   res.status(500).send('Error :' + error);
-// });
-// });
+require('../passport');
 
 //Get all movies
 app.get('/movies', passport.authenticate('jwt', {session:false}), (req, res) => {
@@ -102,7 +72,7 @@ app.get('/movies', passport.authenticate('jwt', {session:false}), (req, res) => 
 });
 
 //Returns information about selected movie
-app.get('/movies/:title',  passport.authenticate('jwt', {session:false}), (req, res) => {
+app.get('/movies/:Title',  passport.authenticate('jwt', {session:false}), (req, res) => {
   Movies.find({ Title:req.params.Title })
     .then((movies) => {
       res.status(201).json(movies);
@@ -114,8 +84,8 @@ app.get('/movies/:title',  passport.authenticate('jwt', {session:false}), (req, 
 });
 
 //Returns a list of movies by Genre
-app.get('/movies/:genre', passport.authenticate('jwt', {session:false}), (req, res) => {
-  Movies.find({ genre:req.params.genre })
+app.get('/movies/:genre',  passport.authenticate('jwt', {session:false}), (req, res) => {
+  Movies.find({ genre:req.params.ObjectID('genre') })
     .then((movies) => {
       res.status(201).json(movies);
     })
@@ -149,20 +119,7 @@ app.get('/directors/:name', passport.authenticate('jwt', {session:false}), (req,
     });
 });
 
-//Sign up page
-app.get('/sign-up.html', function(req, res) {
-  res.sendFile('/public/sign-up.html', { root: __dirname });
-});
-
 //Create Account
-/* Expected JSON Format
-{
-  ID: Integer,
-  username: String,
-  password: String,
-  Email: String,
-  birthday: Date
-} */
 app.post('/users', [
   check('Username', 'Username is required').isLength({min: 4}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -215,13 +172,6 @@ app.get('/users', passport.authenticate('jwt', {session:false}), (req, res) => {
 });
 
 // Update Account info, by username
-/* Expected JSON format
-{
-  Username: String, (required)
-  Password: String, (required)
-  Email: String, (required)
-  Birthday: Date
-}*/
 app.put('/users/:Username', passport.authenticate('jwt', {session:false}), [
   check('Username', 'Username is required').isLength({min: 4}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -253,11 +203,6 @@ app.put('/users/:Username', passport.authenticate('jwt', {session:false}), [
       res.json(updatedUser);
     }
   });
-});
-
-//Login Page
-app.get('/login.html', function(req, res) {
-  res.sendFile('/public/login.html', { root: __dirname });
 });
 
 //User account info

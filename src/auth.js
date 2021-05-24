@@ -3,7 +3,7 @@ const jwtSecret = 'your_jwt_secret'; // Must be the same key used in the JWTStra
 const jwt = require('jsonwebtoken'),
   passport = require('passport');
 
-require('./passport'); // Local passport file
+require('../passport'); // Local passport file
 
 let generateJWTToken = (user) => {
   return jwt.sign(user, jwtSecret, {
