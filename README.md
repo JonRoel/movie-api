@@ -107,10 +107,11 @@
           </tr>
           <tr>
             <td>User login</td>
-            <td>/</td>
+            <td>POST</td>
             <td>/login</td>
-            <td>- </td>
-            <td>User can login to their account</td>
+            <td>Username<br />
+            Password</td>
+            <td>-</td>
           </tr>
           <tr>
             <td>View users info</td>
@@ -172,25 +173,25 @@
     </div>
     <h2>Screenshots for Endpoints</h2>
     <h3>/movies</h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
-    <h3></h3>
-    <img src="">
+    <img src="public/screenshots/movies-endpoint.png">
+    <h3>/movies/:title</h3>
+    <img src="public/screenshots/movie-title-endpoint.png">
+    <h3>/directors</h3>
+    <img src="public/screenshots/directors-endpoint.png">
+    <h3>/directors/:name</h3>
+    <img src="public/screenshots/directors-dirname-endpoint.png">
+    <h3>/users</h3>
+    <img src="public/screenshots/users-endpoint.png">
+    <h3>/users/:username</h3>
+    <img src="public/screenshots/users-username-endpoint.png">
+    <h3>Create /users</h3>
+    <img src="public/screenshots/create-user-endpoint.png">
+    <h3>Delete /users</h3>
+    <img src="public/screenshots/delete-user-endpoint.png">
+    <h3>Update /users</h3>
+    <img src="public/screenshots/update-user-endpoint.png">
+    <h3>Add/Remove Favorites /users/[username]/Movies/[MovieID]</h3>
+    <img src="public/screenshots/add-to-favorites-endpoint.png">
   </body>
   <footer></footer>
 </html>

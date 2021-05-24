@@ -83,18 +83,6 @@ app.get('/movies/:Title',  passport.authenticate('jwt', {session:false}), (req, 
     });
 });
 
-//Returns a list of movies by Genre
-app.get('/movies/:genre',  passport.authenticate('jwt', {session:false}), (req, res) => {
-  Movies.find({ genre:req.params.genre })
-    .then((movies) => {
-      res.status(201).json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
-
 //Returns a list of directors
 app.get('/directors', passport.authenticate('jwt', {session:false}), (req, res) => {
   Directors.find()
