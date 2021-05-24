@@ -14,7 +14,7 @@ let generateJWTToken = (user) => {
 }
 
 /*
-
+Post login create JWT token
 */
 module.exports = (router) => {
   router.post('/login', (req, res) => {

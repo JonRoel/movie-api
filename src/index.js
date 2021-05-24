@@ -59,7 +59,9 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('../passport');
 
-//Get all movies
+/*
+Returns all movies
+*/
 app.get('/movies', passport.authenticate('jwt', {session:false}), (req, res) => {
   Movies.find()
     .then((movies) => {
@@ -71,7 +73,9 @@ app.get('/movies', passport.authenticate('jwt', {session:false}), (req, res) => 
     });
 });
 
-//Returns information about selected movie
+/*
+Returns information about specific movie
+*/
 app.get('/movies/:Title',  passport.authenticate('jwt', {session:false}), (req, res) => {
   Movies.find({ Title:req.params.Title })
     .then((movies) => {
@@ -83,7 +87,9 @@ app.get('/movies/:Title',  passport.authenticate('jwt', {session:false}), (req, 
     });
 });
 
-//Returns a list of directors
+/* 
+Returns a list of directors
+*/
 app.get('/directors', passport.authenticate('jwt', {session:false}), (req, res) => {
   Directors.find()
     .then((directors) => {
@@ -95,7 +101,9 @@ app.get('/directors', passport.authenticate('jwt', {session:false}), (req, res) 
     });
 });
 
-//Returns a page about a specific Director
+/*
+Returns a page about a specific Director
+*/
 app.get('/directors/:name', passport.authenticate('jwt', {session:false}), (req, res) => {
   Directors.findOne({ name: req.params.name})
     .then((directors) => {
@@ -107,7 +115,9 @@ app.get('/directors/:name', passport.authenticate('jwt', {session:false}), (req,
     });
 });
 
-//Create Account
+/* 
+Create a new user account
+*/
 app.post('/users', [
   check('Username', 'Username is required').isLength({min: 4}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -147,7 +157,9 @@ app.post('/users', [
   });
 });
 
-// Get all users
+/* 
+Returns list of all users
+*/
 app.get('/users', passport.authenticate('jwt', {session:false}), (req, res) => {
   Users.find()
     .then((users) => {
@@ -159,7 +171,9 @@ app.get('/users', passport.authenticate('jwt', {session:false}), (req, res) => {
     });
 });
 
-// Update Account info, by username
+/*
+Updates user account info
+*/
 app.put('/users/:Username', passport.authenticate('jwt', {session:false}), [
   check('Username', 'Username is required').isLength({min: 4}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -193,7 +207,9 @@ app.put('/users/:Username', passport.authenticate('jwt', {session:false}), [
   });
 });
 
-//User account info
+/*
+Returns info for a single user account
+*/
 app.get('/users/:Username', passport.authenticate('jwt', {session:false}), (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
@@ -205,7 +221,9 @@ app.get('/users/:Username', passport.authenticate('jwt', {session:false}), (req,
     });
 });
 
-//Delete account
+/* 
+Delete user account
+*/
 app.delete('/users/:Username', passport.authenticate('jwt', {session:false}), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username})
   .then((user) => {
@@ -221,7 +239,9 @@ app.delete('/users/:Username', passport.authenticate('jwt', {session:false}), (r
   });
 });
 
-//Add to favorites
+/*
+Add to users favorite movie list
+*/
 app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {session:false}), (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {
       $addToSet: {Favorites:req.params.MovieID}
@@ -236,7 +256,9 @@ app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {sessi
   });
 });
 
-//Remove from favorites
+/*
+Remove from users favorite movie list
+*/
 app.delete('/users/:Username/Movies/remove/:MovieID', passport.authenticate('jwt', {session:false}), (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {
     $pull: {Favorites:req.params.MovieID}
