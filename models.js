@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+let genreSchema = mongoose.Schema({
+  name: {type: String, required: true},
+  description: String
+});
+
 let movieSchema = mongoose.Schema({
   Title:{type: String, required:true},
   description: {type: String, required:true},
-  genre: {
-    name: String,
-    description:String
-  },
-  director: {
-    name: String,
-    bio: String
-  },
+  genre: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genre'}],
+  director: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Director'}],
   Actors: [String],
   imageUrl: String,
   featured: Boolean
@@ -40,10 +39,13 @@ let directorSchema = mongoose.Schema({
   deathyear: Date
 });
 
+
+let Genre = mongoose.model('Genre', genreSchema);
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
 let Director = mongoose.model('Director', directorSchema);
 
+module.exports.Genre = Genre;
 module.exports.Movie = Movie;
 module.exports.User = User;
 module.exports.Director = Director;

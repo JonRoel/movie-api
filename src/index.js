@@ -17,8 +17,8 @@ const express = require('express'),
 const cors = require('cors');
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Set allowed Origins
 let allowedOrigins = ['http://localhost:8080', 'https://myflix-jonathon.herokuapp.com/'];
@@ -85,7 +85,7 @@ app.get('/movies/:Title',  passport.authenticate('jwt', {session:false}), (req, 
 
 //Returns a list of movies by Genre
 app.get('/movies/:genre',  passport.authenticate('jwt', {session:false}), (req, res) => {
-  Movies.find({ genre:req.params.ObjectID('genre') })
+  Movies.find({ genre:req.params.genre })
     .then((movies) => {
       res.status(201).json(movies);
     })

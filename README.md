@@ -3,14 +3,11 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Movie API Documentation</title>
   </head>
   <body>
     <h1>Movie API</h1>
-    <hr>
     <p>This is a movie api that can be used to access a list of movie detials including: Movie Title, Genre, Directors and description.</p>
     <h2>Tools Used</h2>
-    <hr>
     <p>Language</p>
     <p>Javascript</p>
     <p>Database</p>
@@ -39,7 +36,7 @@
       <table class="methods-table">
         <thead>
           <th>Request</th>
-          <tr>HTTP Method</tr>
+          <th>HTTP Method</th>
           <th>URL</th>
           <th>Request Format</ht>
           <th>Response</th>
@@ -79,13 +76,6 @@
               .."featured": true
             }
             </td>
-          </tr>
-          <tr>
-            <td>Return a list of movies by genre</td>
-            <td>GET</td>
-            <td>movies/[genre]</td>
-            <td>- </td>
-            <td>Returns and a list of movies that match the specified genre</td>
           </tr>
           <tr>
             <td>Return Directors Bio</td>
@@ -172,7 +162,7 @@
           </tr>
           <tr>
             <td>Remove from Favorites</td>
-            <td>POST</td>
+            <td>DELETE</td>
             <td>/users/[username]/Movies/remove/[MovieID]</td>
             <td>- </td>
             <td>- </td>
@@ -180,6 +170,27 @@
         </tbody>
       </table>
     </div>
+    <h2>Screenshots for Endpoints</h2>
+    <h3>/movies</h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
+    <h3></h3>
+    <img src="">
   </body>
   <footer></footer>
 </html>
