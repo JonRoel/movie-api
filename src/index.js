@@ -73,6 +73,21 @@ app.get('/movies', passport.authenticate('jwt', {session:false}), (req, res) => 
     });
 });
 
+
+/* 
+Return all movies that match a specific genre
+*/
+app.get('/movies/:genre',  passport.authenticate('jwt', {session:false}), (req, res) => {
+  const genre = req.params.objectID;
+  Movies.find({ 'genre.type':genre })
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 /*
 Returns information about specific movie
 */
