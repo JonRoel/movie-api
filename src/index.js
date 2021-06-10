@@ -80,7 +80,7 @@ Returns all movies
 */
 app.get(
   "/movies",
-  /*passport.authenticate("jwt", { session: false }),*/
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Movies.find()
       .then((movies) => {
@@ -93,7 +93,7 @@ app.get(
   }
 );
 
-/* 
+/*
 Return all movies that match a specific genre
 */
 app.get(
@@ -130,7 +130,7 @@ app.get(
   }
 );
 
-/* 
+/*
 Returns a list of directors
 */
 app.get(
@@ -166,7 +166,7 @@ app.get(
   }
 );
 
-/* 
+/*
 Create a new user account
 */
 app.post(
@@ -216,7 +216,7 @@ app.post(
   }
 );
 
-/* 
+/*
 Returns list of all users
 */
 app.get(
@@ -298,7 +298,7 @@ app.get(
   }
 );
 
-/* 
+/*
 Delete user account
 */
 app.delete(
