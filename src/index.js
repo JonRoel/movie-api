@@ -102,7 +102,7 @@ app.get(
   (req, res) => {
     // const genre = req.params.objectID;
     // Movies.find({ 'genre.type':genre })
-    Movies.find({ genre: req.params.genre })
+    Movies.find({ genre: req.params.genre.name })
       .then((movies) => {
         res.status(201).json(movies);
       })
@@ -119,8 +119,6 @@ app.get(
   "/genres/:name",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    // const genre = req.params.objectID;
-    // Movies.find({ 'genre.type':genre })
     Genres.findOne({ name: req.params.name })
       .then((genres) => {
         res.status(201).json(genres);
