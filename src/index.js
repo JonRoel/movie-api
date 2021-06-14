@@ -121,7 +121,7 @@ app.get(
   (req, res) => {
     // const genre = req.params.objectID;
     // Movies.find({ 'genre.type':genre })
-    Genres.find({ genre: req.params.name })
+    Genres.findOne({ name: req.params.name })
       .then((genres) => {
         res.status(201).json(genres);
       })
