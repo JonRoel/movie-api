@@ -113,6 +113,25 @@ app.get(
   }
 );
 /*
+Return all movies that match a specific genre
+*/
+app.get(
+  "/genres/:name",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    // const genre = req.params.objectID;
+    // Movies.find({ 'genre.type':genre })
+    Genres.find({ genre: req.params.name })
+      .then((genres) => {
+        res.status(201).json(genres);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
+/*
 Returns information about specific movie
 */
 app.get(
