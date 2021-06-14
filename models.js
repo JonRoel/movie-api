@@ -11,7 +11,7 @@ let movieSchema = mongoose.Schema({
   description: { type: String, required: true },
   genre: {
     "name" : String,
-    "description" : string
+    "description" : String
   },
   director: {
     "name": String,
