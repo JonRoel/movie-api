@@ -255,7 +255,7 @@ app.get(
 Updates user account info
 */
 app.put(
-  "/users/:Username",
+  "/userupdate/:Username",
   passport.authenticate("jwt", { session: false }),
   [
     check("Username", "Username is required").isLength({ min: 4 }),
