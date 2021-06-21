@@ -341,7 +341,7 @@ app.delete(
 Add to users favorite movie list
 */
 app.post(
-  "/users/:Username/Movies/:MovieID",
+  "/users/addtofavs/:Username/:MovieID",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Users.findOneAndUpdate(
@@ -365,7 +365,7 @@ app.post(
 Remove from users favorite movie list
 */
 app.delete(
-  "/users/:Username/Movies/remove/:MovieID",
+  "/users/removefromfavs/:Username/:MovieID",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Users.findOneAndUpdate(
