@@ -258,11 +258,11 @@ app.put(
   "/userupdate/:Username",
   passport.authenticate("jwt", { session: false }),
   [
-    check("Username", "Username is required").isLength({ min: 4 }),
-    check(
-      "Username",
-      "Username contains non alphanumeric characters - not allowed."
-    ).isAlphanumeric(),
+    //check("Username", "Username is required").isLength({ min: 4 }),
+    //check(
+      //"Username",
+      //"Username contains non alphanumeric characters - not allowed."
+    //).isAlphanumeric(),
     check("Password", "Password is required").not().isEmpty(),
     check("Email", "Email does not appear to be valid").isEmail(),
   ],
@@ -278,7 +278,7 @@ app.put(
       { Username: req.params.Username },
       {
         $set: {
-          Username: req.body.Username,
+          //Username: req.body.Username,
           Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
