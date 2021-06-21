@@ -364,7 +364,7 @@ app.post(
 /*
 Remove from users favorite movie list
 */
-app.delete(
+app.post(
   "/users/removefromfavs/:Username/:MovieID",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
