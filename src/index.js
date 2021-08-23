@@ -4,6 +4,7 @@ const Models = require("../models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
 const Directors = Models.Director;
+const Genres = Models.Genre;
 
 const { check, validationResult } = require("express-validator");
 
@@ -32,7 +33,8 @@ let allowedOrigins = [
   "https://myflix-jonathon.herokuapp.com/",
   "http://localhost:1234",
   "https://myflix-jonathonroeland.netlify.app",
-  "wss://myflix-jonathonroeland.netlify.app/"
+  "wss://myflix-jonathonroeland.netlify.app/",
+  "http://localhost:4200/"
 ];
 
 app.use(
