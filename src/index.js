@@ -117,7 +117,7 @@ app.get(
   }
 );
 /*
-Return all movies that match a specific genre
+Return details about a specific genre
 */
 app.get(
   "/genres/:name",
