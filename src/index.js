@@ -38,6 +38,8 @@ let allowedOrigins = [
   "http://localhost:4200",
   "https://jonroel.github.io/myFlix-Anglular-client",
   "https://jonroel.github.io/myFlix-Anglular-client/",
+  "https://jonroel.github.io",
+  "https://jonroel.github.io/",
 ];
 
 app.use(
