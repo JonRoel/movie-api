@@ -35,7 +35,9 @@ let allowedOrigins = [
   "https://myflix-jonathonroeland.netlify.app",
   "wss://myflix-jonathonroeland.netlify.app/",
   "http://localhost:4200/",
-  "http://localhost:4200"
+  "http://localhost:4200",
+  "https://jonroel.github.io/myFlix-Anglular-client",
+  "https://jonroel.github.io/myFlix-Anglular-client/",
 ];
 
 app.use(
